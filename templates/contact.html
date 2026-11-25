@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | Fashion Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    color: #222;
+}
+
+/* TOP BAR */
+.topbar {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 11px;
+    font-size: 13px;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 2px 10px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #e91e63;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a.active {
+    color: #e91e63;
+}
+
+.menu {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* HERO BANNER */
+.banner {
+    height: 320px;
+    background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.banner p {
+    font-size: 17px;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+    padding: 20px 7%;
+    color: #777;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #e91e63;
+    text-decoration: none;
+}
+
+/* SECTION HEADING */
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.heading p {
+    color: #777;
+    line-height: 1.7;
+}
+
+/* CONTACT INFORMATION */
+.contact-section {
+    padding: 50px 7% 70px;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 65px;
+}
+
+.info-card {
+    padding: 35px 20px;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 5px 20px #ddd;
+}
+
+.info-card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.info-card p {
+    color: #777;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* CONTACT MAIN */
+.contact-main {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 45px;
+    align-items: start;
+}
+
+/* LEFT CONTENT */
+.contact-info {
+    background: #171717;
+    color: white;
+    padding: 40px 30px;
+    border-radius: 5px;
+}
+
+.contact-info h2 {
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.contact-info > p {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.detail {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.detail .icon {
+    font-size: 23px;
+    color: #e91e63;
+}
+
+.detail h4 {
+    margin-bottom: 7px;
+}
+
+.detail p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* SOCIAL LINKS */
+.social {
+    margin-top: 30px;
+}
+
+.social a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: #333;
+    padding: 11px 14px;
+    margin: 5px 5px 0 0;
+    border-radius: 4px;
+    transition: .3s;
+}
+
+.social a:hover {
+    background: #e91e63;
+}
+
+/* CONTACT FORM */
+.contact-form {
+    padding: 35px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 20px #eee;
+    border-radius: 5px;
+}
+
+.contact-form h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.contact-form > p {
+    color: #777;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #e91e63;
+}
+
+.form-group textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #e91e63;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit-btn:hover {
+    background: #111;
+}
+
+/* MESSAGE */
+#successMessage {
+    display: none;
+    color: #16813d;
+    background: #e8f7ed;
+    padding: 13px;
+    margin-top: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* MAP */
+.map-section {
+    padding: 20px 7% 70px;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* FAQ */
+.faq-section {
+    padding: 60px 7%;
+    background: #faf3f5;
+}
+
+.faq-item {
+    max-width: 850px;
+    margin: 15px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.faq-answer {
+    display: none;
+    color: #777;
+    line-height: 1.8;
+    padding-top: 15px;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+/* FOOTER */
+footer {
+    background: #171717;
+    color: white;
+    padding: 45px 7% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+footer h3 {
+    margin-bottom: 18px;
+}
+
+footer p,
+footer a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    line-height: 2;
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: #e91e63;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #aaa;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 25px;
+        flex-direction: column;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .contact-main {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        padding: 17px 5%;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .banner {
+        height: 250px;
+    }
+
+    .banner h1 {
+        font-size: 35px;
+    }
+
+    .contact-section {
+        padding: 35px 5%;
+    }
+
+    .contact-form {
+        padding: 22px;
+    }
+
+    .contact-info {
+        padding: 30px 22px;
+    }
+
+    .heading h2 {
+        font-size: 27px;
+    }
+
+    .map-section {
+        padding: 10px 5% 50px;
+    }
+
+    .map-section iframe {
+        height: 280px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    FREE SHIPPING ABOVE ₹999 | WE ARE HERE TO HELP YOU
+</div>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">
+        FASHION<span>STORE</span>
+    </div>
+
+    <nav id="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="category.html">Categories</a>
+        <a href="product.html">Products</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+
+</header>
+
+<!-- BANNER -->
+<section class="banner">
+
+    <div>
+        <h1>CONTACT US</h1>
+        <p>We Would Love To Hear From You!</p>
+    </div>
+
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Home</a> / Contact Us
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+
+    <div class="heading">
+        <h2>GET IN TOUCH</h2>
+        <p>Have a question? Contact our team. We're happy to help!</p>
+    </div>
+
+    <!-- CONTACT CARDS -->
+    <div class="contact-cards">
+
+        <div class="info-card">
+            <div class="icon">📍</div>
+            <h3>Our Location</h3>
+            <p>Fashion Store<br>India</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">📞</div>
+            <h3>Call Us</h3>
+            <p>+91 9876543210<br>Mon - Sat: 9 AM - 6 PM</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">✉️</div>
+            <h3>Email Us</h3>
+            <p>support@fashionstore.com<br>We reply as soon as possible.</p>
+        </div>
+
+    </div>
+
+    <!-- CONTACT FORM AND DETAILS -->
+    <div class="contact-main">
+
+        <!-- LEFT INFORMATION -->
+        <div class="contact-info">
+
+            <h2>Let's Talk!</h2>
+
+            <p>
+                Your feedback and questions are important to us.
+                Send us a message and our team will be happy to assist you.
+            </p>
+
+            <div class="detail">
+                <div class="icon">📍</div>
+                <div>
+                    <h4>Address</h4>
+                    <p>Fashion Store, India</p>
+                </div>
+            </div>
+
+            <div class="detail">
+                <div class="icon">📞</div>
+                <div>
+                    <h4>Phone Number</h4>
+                    <p>+91 9876543210</p>
+                </div>
+            </div>
+
+            <div class="detail">
+                <div class="icon">✉️</div>
+                <div>
+                    <h4>Email Address</h4>
+                    <p>support@fashionstore.com</p>
+                </div>
+            </div>
+
+            <div class="detail">
+                <div class="icon">🕒</div>
+                <div>
+                    <h4>Working Hours</h4>
+                    <p>Monday - Saturday<br>9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+
+            <div class="social">
+                <h3>Follow Us</h3>
+
+                <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+
+                <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+
+                <a href="https://www.pinterest.com/" target="_blank">Pinterest</a>
+            </div>
+
+        </div>
+
+        <!-- RIGHT CONTACT FORM -->
+        <div class="contact-form">
+
+            <h2>Send Us A Message</h2>
+
+            <p>Fill out the form below and get in touch with us.</p>
+
+            <form id="contactForm">
+
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+
+                    <select id="subject" required>
+                        <option value="">Select Subject</option>
+                        <option>Order Related</option>
+                        <option>Product Information</option>
+                        <option>Payment Issue</option>
+                        <option>Return & Refund</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+
+                    <textarea
+                    id="message"
+                    placeholder="Write your message here..."
+                    required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    SEND MESSAGE →
+                </button>
+
+                <div id="successMessage">
+                    Thank you! Your message has been submitted.
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+
+    <div class="heading">
+        <h2>FIND US ON MAP</h2>
+        <p>Visit our location.</p>
+    </div>
+
+    <iframe
+    src="https://www.google.com/maps?q=New%20Delhi%2C%20India&output=embed"
+    loading="lazy"
+    title="Map showing New Delhi">
+    </iframe>
+
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+
+    <div class="heading">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to some common questions.</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            How can I track my order?
+            <span>+</span>
+        </div>
+        <div class="faq-answer">
+            Contact our support team with your order details
+            to get assistance with tracking.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            What payment methods are accepted?
+            <span>+</span>
+        </div>
+        <div class="faq-answer">
+            Available payment options will be displayed
+            during checkout.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            How can I return a product?
+            <span>+</span>
+        </div>
+        <div class="faq-answer">
+            Contact customer support for assistance
+            with your return request.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            How can I contact customer support?
+            <span>+</span>
+        </div>
+        <div class="faq-answer">
+            You can contact us using the contact form,
+            phone number or email address listed above.
+        </div>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>FASHION STORE</h3>
+            <p>Your Style, Your Identity.</p>
+            <p>Discover the latest fashion trends with us.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="category.html">Categories</a>
+            <a href="product.html">Products</a>
+        </div>
+
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: support@fashionstore.com</p>
+            <p>Phone: +91 9876543210</p>
+            <p>Location: India</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Fashion Store. All Rights Reserved.
+    </div>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// MOBILE MENU
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("show");
+}
+
+// CONTACT FORM
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if(!name || !email || !phone || !message) {
+        alert("Please fill all required fields!");
+        return;
+    }
+
+    if(!/^[0-9]{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit phone number!");
+        return;
+    }
+
+    document.getElementById("successMessage").style.display = "block";
+
+    this.reset();
+
+});
+
+// FAQ ACCORDION
+document.querySelectorAll(".faq-item").forEach(item => {
+
+    item.addEventListener("click", function() {
+
+        this.classList.toggle("open");
+
+        let symbol = this.querySelector(".faq-question span");
+
+        symbol.innerText = this.classList.contains("open") ? "−" : "+";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

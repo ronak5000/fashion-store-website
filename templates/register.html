@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register | FASHION STORE</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f7f5f2;
+    color: #222;
+}
+
+/* NAVBAR */
+header {
+    background: #111;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #d6a85c;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #d6a85c;
+}
+
+/* REGISTER SECTION */
+.register-section {
+    min-height: 90vh;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600')
+    center/cover no-repeat;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,.3);
+}
+
+/* LEFT SIDE */
+.register-image {
+    background:
+    linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65)),
+    url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000')
+    center/cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 45px;
+    color: white;
+}
+
+.register-image h2 {
+    font-size: 36px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.register-image p {
+    font-size: 14px;
+    color: #eee;
+    line-height: 1.8;
+}
+
+/* FORM */
+.register-form {
+    padding: 45px;
+}
+
+.register-form h2 {
+    font-size: 30px;
+    margin-bottom: 7px;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+/* INPUTS */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    outline: none;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #c69a52;
+    box-shadow: 0 0 0 2px rgba(198,154,82,.12);
+}
+
+/* TWO COLUMN INPUTS */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* PASSWORD */
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 60px;
+}
+
+.show-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #a77b39;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* TERMS */
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 18px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.terms input {
+    margin-top: 4px;
+    accent-color: #c69a52;
+}
+
+.terms a {
+    color: #a77b39;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* BUTTON */
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #111;
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.register-btn:hover {
+    background: #c69a52;
+}
+
+/* MESSAGE */
+.message {
+    font-size: 12px;
+    margin-top: 12px;
+    min-height: 16px;
+}
+
+/* LOGIN LINK */
+.login-text {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 13px;
+    color: #666;
+}
+
+.login-text a {
+    color: #a77b39;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    font-size: 13px;
+}
+
+footer span {
+    color: #d6a85c;
+}
+
+/* RESPONSIVE */
+@media(max-width: 800px) {
+
+    header {
+        padding: 18px 5%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .register-container {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+    }
+
+    .register-image {
+        min-height: 220px;
+        padding: 25px;
+    }
+
+    .register-image h2 {
+        font-size: 28px;
+    }
+
+    .register-form {
+        padding: 30px 25px;
+    }
+}
+
+@media(max-width: 450px) {
+    .input-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .register-form h2 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+
+    <div class="logo">
+        FASHION<span>STORE</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="category.html">Categories</a>
+        <a href="product.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+    </nav>
+
+</header>
+
+<!-- REGISTER SECTION -->
+<section class="register-section">
+
+    <div class="register-container">
+
+        <!-- IMAGE SIDE -->
+        <div class="register-image">
+
+            <h2>JOIN THE<br>FASHION WORLD</h2>
+
+            <p>
+                Create your account today and explore the latest
+                fashion trends, exclusive collections and special offers.
+            </p>
+
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div class="register-form">
+
+            <h2>Create Account</h2>
+
+            <p class="subtitle">
+                Register now and start your fashion journey.
+            </p>
+
+            <form id="registerForm">
+
+                <!-- NAME -->
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name"
+                    placeholder="Enter your full name"
+                    required minlength="3">
+                </div>
+
+                <!-- EMAIL & PHONE -->
+                <div class="input-row">
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email"
+                        placeholder="Enter email"
+                        required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone"
+                        placeholder="10 digit number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        required>
+                    </div>
+
+                </div>
+
+                <!-- GENDER -->
+                <div class="input-group">
+
+                    <label>Gender</label>
+
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="input-group">
+
+                    <label>Password</label>
+
+                    <div class="password-box">
+
+                        <input type="password" id="password"
+                        placeholder="Create password"
+                        minlength="8"
+                        required>
+
+                        <button type="button"
+                        class="show-password"
+                        data-target="password">
+                        Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+                <div class="input-group">
+
+                    <label>Confirm Password</label>
+
+                    <div class="password-box">
+
+                        <input type="password" id="confirmPassword"
+                        placeholder="Confirm password"
+                        required>
+
+                        <button type="button"
+                        class="show-password"
+                        data-target="confirmPassword">
+                        Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- TERMS -->
+                <label class="terms">
+
+                    <input type="checkbox" id="terms" required>
+
+                    <span>
+                        I agree to the
+                        <a href="#">Terms & Conditions</a>
+                        and
+                        <a href="#">Privacy Policy</a>.
+                    </span>
+
+                </label>
+
+                <p class="message" id="message"></p>
+
+                <!-- BUTTON -->
+                <button type="submit" class="register-btn">
+                    CREATE ACCOUNT
+                </button>
+
+            </form>
+
+            <p class="login-text">
+                Already have an account?
+                <a href="login.html">Login Here</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 <span>FASHION STORE</span>.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+<script>
+
+// SHOW / HIDE PASSWORD
+document.querySelectorAll(".show-password").forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        const input = document.getElementById(this.dataset.target);
+
+        if(input.type === "password") {
+            input.type = "text";
+            this.textContent = "Hide";
+        } else {
+            input.type = "password";
+            this.textContent = "Show";
+        }
+
+    });
+
+});
+
+
+// REGISTER FORM VALIDATION
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const gender = document.getElementById("gender").value;
+
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    const terms = document.getElementById("terms").checked;
+    const message = document.getElementById("message");
+
+    message.style.color = "red";
+
+    if(name.length < 3) {
+        message.textContent = "Please enter your full name.";
+        return;
+    }
+
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        message.textContent = "Please enter a valid email address.";
+        return;
+    }
+
+    if(!/^[0-9]{10}$/.test(phone)) {
+        message.textContent = "Please enter a valid 10-digit phone number.";
+        return;
+    }
+
+    if(!gender) {
+        message.textContent = "Please select your gender.";
+        return;
+    }
+
+    if(password.length < 8) {
+        message.textContent = "Password must contain at least 8 characters.";
+        return;
+    }
+
+    if(password !== confirmPassword) {
+        message.textContent = "Passwords do not match!";
+        return;
+    }
+
+    if(!terms) {
+        message.textContent = "Please accept Terms & Conditions.";
+        return;
+    }
+
+    message.style.color = "green";
+
+    message.textContent =
+    "Registration form validated successfully! Connect a backend to create your account.";
+
+    // Frontend demo only.
+    // Connect Django/PHP/Node.js to save accounts securely.
+
+});
+
+</script>
+
+</body>
+</html>

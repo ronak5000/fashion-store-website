@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Fashion Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #222;
+    background: #fff;
+}
+
+/* TOP BAR */
+.topbar {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 11px;
+    font-size: 13px;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 2px 10px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #e91e63;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a.active {
+    color: #e91e63;
+}
+
+.menu {
+    display: none;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* HERO BANNER */
+.hero {
+    height: 370px;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 17px;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+    padding: 20px 7%;
+    color: #777;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #e91e63;
+    text-decoration: none;
+}
+
+/* COMMON SECTION */
+.section {
+    padding: 65px 7%;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.heading p {
+    color: #777;
+    line-height: 1.7;
+}
+
+/* OUR STORY */
+.story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.story-image img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.story-content h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.story-content h4 {
+    color: #e91e63;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.story-content p {
+    color: #666;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e91e63;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #111;
+}
+
+/* MISSION VISION */
+.mission {
+    background: #faf3f5;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.mission-card {
+    background: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 7px;
+    box-shadow: 0 3px 15px #eee;
+    transition: .3s;
+}
+
+.mission-card:hover {
+    transform: translateY(-7px);
+}
+
+.mission-card .icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.mission-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.mission-card p {
+    color: #777;
+    line-height: 1.8;
+}
+
+/* WHY CHOOSE US */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature {
+    text-align: center;
+    padding: 30px 20px;
+    border: 1px solid #eee;
+    transition: .3s;
+}
+
+.feature:hover {
+    box-shadow: 0 5px 20px #ddd;
+    transform: translateY(-5px);
+}
+
+.feature .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.feature p {
+    color: #777;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* STATISTICS */
+.stats {
+    background: #171717;
+    color: white;
+    padding: 60px 7%;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.stat h2 {
+    font-size: 40px;
+    color: #e91e63;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    color: #ddd;
+}
+
+/* TEAM */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.team-card {
+    text-align: center;
+    border: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.team-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.team-card p {
+    color: #e91e63;
+    font-size: 14px;
+}
+
+/* CTA */
+.cta {
+    background: #f8e8ed;
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.cta h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer {
+    background: #171717;
+    color: white;
+    padding: 45px 7% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+footer h3 {
+    margin-bottom: 18px;
+}
+
+footer p,
+footer a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    line-height: 2;
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: #e91e63;
+}
+
+.copyright {
+    border-top: 1px solid #444;
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: center;
+    color: #aaa;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 25px;
+        flex-direction: column;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .story {
+        grid-template-columns: 1fr;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 35px;
+    }
+}
+
+@media(max-width: 600px) {
+
+    header {
+        padding: 17px 5%;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .hero {
+        height: 280px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .section {
+        padding: 45px 5%;
+    }
+
+    .story-image img {
+        height: 300px;
+    }
+
+    .story-content h2 {
+        font-size: 28px;
+    }
+
+    .mission-grid,
+    .features,
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat h2 {
+        font-size: 30px;
+    }
+
+    .heading h2,
+    .cta h2 {
+        font-size: 27px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    FREE SHIPPING ABOVE ₹999 | NEW COLLECTION AVAILABLE
+</div>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">
+        FASHION<span>STORE</span>
+    </div>
+
+    <nav id="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="category.html">Categories</a>
+        <a href="product.html">Products</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div>
+        <h1>ABOUT US</h1>
+        <p>Fashion Is Not Just Clothing, It's Your Identity.</p>
+    </div>
+
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Home</a> / About Us
+</div>
+
+<!-- OUR STORY -->
+<section class="section">
+
+    <div class="story">
+
+        <div class="story-image">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900"
+            alt="Fashion Store">
+        </div>
+
+        <div class="story-content">
+
+            <h4>OUR STORY</h4>
+
+            <h2>Welcome To Fashion Store</h2>
+
+            <p>
+                Welcome to Fashion Store, your destination for
+                modern, stylish and affordable fashion.
+                We believe that everyone deserves to look
+                confident and feel comfortable.
+            </p>
+
+            <p>
+                Our collection includes trendy outfits,
+                fashionable shoes, stylish watches and
+                beautiful accessories for every occasion.
+            </p>
+
+            <p>
+                Our goal is to make online fashion shopping
+                simple, enjoyable and affordable for everyone.
+            </p>
+
+            <a href="category.html" class="btn">
+                EXPLORE COLLECTION
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MISSION AND VISION -->
+<section class="section mission">
+
+    <div class="heading">
+        <h2>Our Mission & Vision</h2>
+        <p>What makes Fashion Store special.</p>
+    </div>
+
+    <div class="mission-grid">
+
+        <div class="mission-card">
+            <div class="icon">🎯</div>
+
+            <h3>Our Mission</h3>
+
+            <p>
+                Our mission is to provide high-quality,
+                trendy and affordable fashion products
+                to customers while delivering an amazing
+                shopping experience.
+            </p>
+        </div>
+
+        <div class="mission-card">
+            <div class="icon">🌟</div>
+
+            <h3>Our Vision</h3>
+
+            <p>
+                Our vision is to become a trusted fashion
+                destination where everyone can discover
+                their own unique style and express themselves.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section">
+
+    <div class="heading">
+        <h2>Why Choose Us?</h2>
+        <p>We care about your style and shopping experience.</p>
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="icon">👗</div>
+            <h3>Trendy Collection</h3>
+            <p>Discover the latest fashion trends and stylish collections.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">💰</div>
+            <h3>Affordable Prices</h3>
+            <p>Get fashionable products at pocket-friendly prices.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>Enjoy convenient delivery right to your doorstep.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">⭐</div>
+            <h3>Quality Products</h3>
+            <p>Explore products selected with style and comfort in mind.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🔒</div>
+            <h3>Secure Shopping</h3>
+            <p>Enjoy a smooth and secure shopping experience.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">❤️</div>
+            <h3>Customer Support</h3>
+            <p>We are here to help you with your shopping questions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATISTICS -->
+<section class="stats">
+
+    <div class="stats-grid">
+
+        <div class="stat">
+            <h2 class="counter" data-target="5000">0</h2>
+            <p>Happy Customers</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="150">0</h2>
+            <p>Fashion Products</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="20">0</h2>
+            <p>Fashion Categories</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="counter" data-target="100">0</h2>
+            <p>Customer Satisfaction</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TEAM -->
+<section class="section">
+
+    <div class="heading">
+        <h2>Meet Our Team</h2>
+        <p>The people behind Fashion Store.</p>
+    </div>
+
+    <div class="team-grid">
+
+        <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600"
+            alt="Founder">
+            <h3>Our Founder</h3>
+            <p>Founder & CEO</p>
+        </div>
+
+        <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600"
+            alt="Fashion Designer">
+            <h3>Fashion Designer</h3>
+            <p>Creative Designer</p>
+        </div>
+
+        <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600"
+            alt="Manager">
+            <h3>Store Manager</h3>
+            <p>Management Team</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta">
+
+    <h2>Ready To Upgrade Your Style?</h2>
+
+    <p>Explore our latest collections and find your perfect look.</p>
+
+    <a href="category.html" class="btn">
+        SHOP NOW →
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>FASHION STORE</h3>
+            <p>Your Style, Your Identity.</p>
+            <p>Discover the latest fashion trends with us.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="category.html">Categories</a>
+            <a href="product.html">Products</a>
+        </div>
+
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: support@fashionstore.com</p>
+            <p>Phone: +91 9876543210</p>
+            <p>Location: India</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Fashion Store. All Rights Reserved.
+    </div>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// MOBILE MENU
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("show");
+}
+
+// ANIMATED COUNTERS
+const counters = document.querySelectorAll(".counter");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting) {
+
+            const counter = entry.target;
+            const target = Number(counter.dataset.target);
+            let current = 0;
+
+            const increment = Math.max(1, Math.ceil(target / 100));
+
+            const timer = setInterval(() => {
+
+                current += increment;
+
+                if(current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+
+                counter.innerText = current.toLocaleString("en-IN") +
+                (target === 100 ? "%" : "+");
+
+            }, 20);
+
+            observer.unobserve(counter);
+        }
+
+    });
+
+}, { threshold: 0.5 });
+
+counters.forEach(counter => observer.observe(counter));
+
+</script>
+
+</body>
+</html>

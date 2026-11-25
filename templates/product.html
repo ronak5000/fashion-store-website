@@ -1,0 +1,940 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products | Fashion Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    color: #222;
+}
+
+/* TOP BAR */
+.topbar {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 11px;
+    font-size: 13px;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 2px 10px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #e91e63;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a.active {
+    color: #e91e63;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart {
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menu {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* BANNER */
+.banner {
+    height: 300px;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.banner p {
+    font-size: 17px;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+    padding: 20px 7%;
+    color: #777;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #e91e63;
+    text-decoration: none;
+}
+
+/* PRODUCT SECTION */
+.product-section {
+    padding: 35px 7% 70px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.heading h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.heading p {
+    color: #777;
+}
+
+/* FILTER AREA */
+.filter-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.filter-area input,
+.filter-area select {
+    padding: 13px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    background: white;
+}
+
+.filter-area input {
+    width: 250px;
+}
+
+.filter-area input:focus,
+.filter-area select:focus {
+    border-color: #e91e63;
+}
+
+/* CATEGORY BUTTONS */
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.categories button {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 11px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.categories button:hover,
+.categories button.active {
+    background: #e91e63;
+    color: white;
+    border-color: #e91e63;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 5px 20px #ddd;
+}
+
+.product-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
+.tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #e91e63;
+    color: white;
+    padding: 7px 12px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.product-info {
+    padding: 17px;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.rating {
+    color: #f5a623;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.price {
+    color: #e91e63;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-left: 7px;
+    font-weight: normal;
+}
+
+.product-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.product-buttons button {
+    padding: 11px 5px;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    font-weight: bold;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.add-btn {
+    background: #111;
+    color: white;
+}
+
+.buy-btn {
+    background: #e91e63;
+    color: white;
+}
+
+.add-btn:hover {
+    background: #e91e63;
+}
+
+.buy-btn:hover {
+    background: #111;
+}
+
+/* NO RESULT */
+.no-result {
+    display: none;
+    text-align: center;
+    color: #e91e63;
+    padding: 35px;
+    font-size: 18px;
+}
+
+/* OFFER */
+.offer {
+    background: #f8e8ed;
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.offer h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.offer p {
+    color: #555;
+    margin-bottom: 22px;
+}
+
+.offer a {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #e91e63;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.offer a:hover {
+    background: #111;
+}
+
+/* FOOTER */
+footer {
+    background: #171717;
+    color: white;
+    padding: 45px 7% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+footer h3 {
+    margin-bottom: 18px;
+}
+
+footer p,
+footer a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    line-height: 2;
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: #e91e63;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #aaa;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1050px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 900px) {
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 25px;
+        flex-direction: column;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        padding: 17px 5%;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .banner {
+        height: 250px;
+    }
+
+    .banner h1 {
+        font-size: 34px;
+    }
+
+    .product-section {
+        padding: 35px 4%;
+    }
+
+    .product-grid {
+        gap: 12px;
+    }
+
+    .product-card img {
+        height: 190px;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-info h3 {
+        font-size: 14px;
+    }
+
+    .product-buttons button {
+        font-size: 10px;
+    }
+
+    .filter-area {
+        align-items: stretch;
+    }
+
+    .filter-area input,
+    .filter-area select {
+        width: 100%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .offer h2 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    FREE SHIPPING ABOVE ₹999 | MEGA FASHION SALE
+</div>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">
+        FASHION<span>STORE</span>
+    </div>
+
+    <nav id="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="category.html">Categories</a>
+        <a href="product.html" class="active">Products</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+
+        <div class="cart" onclick="showCart()">
+            🛒 Cart (<span id="cartCount">0</span>)
+        </div>
+
+        <div class="menu" onclick="toggleMenu()">☰</div>
+
+    </div>
+
+</header>
+
+<!-- BANNER -->
+<section class="banner">
+    <div>
+        <h1>OUR PRODUCTS</h1>
+        <p>Discover Your Style. Shop Your Favourite Fashion.</p>
+    </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Home</a> / Products
+</div>
+
+<!-- PRODUCTS -->
+<section class="product-section">
+
+    <div class="heading">
+        <h2>EXPLORE OUR COLLECTION</h2>
+        <p>Find your perfect fashion style at the best prices.</p>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filter-area">
+
+        <input type="text"
+        id="searchInput"
+        placeholder="🔍 Search products..."
+        oninput="filterProducts()">
+
+        <select id="priceFilter" onchange="filterProducts()">
+            <option value="all">All Prices</option>
+            <option value="1000">Below ₹1,000</option>
+            <option value="2000">Below ₹2,000</option>
+            <option value="3000">Below ₹3,000</option>
+        </select>
+
+        <select id="sortFilter" onchange="filterProducts()">
+            <option value="default">Sort By</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+        </select>
+
+    </div>
+
+    <!-- CATEGORY FILTER -->
+    <div class="categories">
+
+        <button class="active" onclick="selectCategory('all',this)">All Products</button>
+
+        <button onclick="selectCategory('men',this)">Men</button>
+
+        <button onclick="selectCategory('women',this)">Women</button>
+
+        <button onclick="selectCategory('shoes',this)">Shoes</button>
+
+        <button onclick="selectCategory('watches',this)">Watches</button>
+
+        <button onclick="selectCategory('accessories',this)">Accessories</button>
+
+    </div>
+
+    <!-- PRODUCT CARDS -->
+    <div class="product-grid" id="productGrid">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card" data-category="women" data-price="1499">
+
+            <span class="tag">SALE</span>
+
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600"
+            alt="Women's Dress">
+
+            <div class="product-info">
+                <h3>Women's Stylish Dress</h3>
+                <div class="rating">★★★★★ (120)</div>
+                <div class="price">₹1,499 <span class="old-price">₹2,499</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Women Stylish Dress')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Women Stylish Dress')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card" data-category="men" data-price="2299">
+
+            <span class="tag">POPULAR</span>
+
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600"
+            alt="Men's Blazer">
+
+            <div class="product-info">
+                <h3>Men's Premium Blazer</h3>
+                <div class="rating">★★★★★ (98)</div>
+                <div class="price">₹2,299 <span class="old-price">₹3,499</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Men Premium Blazer')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Men Premium Blazer')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card" data-category="shoes" data-price="1899">
+
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"
+            alt="Sports Shoes">
+
+            <div class="product-info">
+                <h3>Premium Sports Shoes</h3>
+                <div class="rating">★★★★☆ (85)</div>
+                <div class="price">₹1,899 <span class="old-price">₹2,999</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Premium Sports Shoes')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Premium Sports Shoes')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="product-card" data-category="accessories" data-price="999">
+
+            <span class="tag">NEW</span>
+
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600"
+            alt="Handbag">
+
+            <div class="product-info">
+                <h3>Luxury Handbag</h3>
+                <div class="rating">★★★★★ (150)</div>
+                <div class="price">₹999 <span class="old-price">₹1,599</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Luxury Handbag')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Luxury Handbag')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 5 -->
+        <div class="product-card" data-category="watches" data-price="2499">
+
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"
+            alt="Watch">
+
+            <div class="product-info">
+                <h3>Classic Luxury Watch</h3>
+                <div class="rating">★★★★★ (75)</div>
+                <div class="price">₹2,499 <span class="old-price">₹3,999</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Classic Luxury Watch')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Classic Luxury Watch')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 6 -->
+        <div class="product-card" data-category="men" data-price="1299">
+
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"
+            alt="Men T Shirt">
+
+            <div class="product-info">
+                <h3>Men's Casual T-Shirt</h3>
+                <div class="rating">★★★★☆ (64)</div>
+                <div class="price">₹1,299 <span class="old-price">₹1,899</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Mens Casual T-Shirt')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Mens Casual T-Shirt')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 7 -->
+        <div class="product-card" data-category="women" data-price="1799">
+
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600"
+            alt="Women's Outfit">
+
+            <div class="product-info">
+                <h3>Women's Fashion Outfit</h3>
+                <div class="rating">★★★★★ (110)</div>
+                <div class="price">₹1,799 <span class="old-price">₹2,599</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Womens Fashion Outfit')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Womens Fashion Outfit')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 8 -->
+        <div class="product-card" data-category="shoes" data-price="899">
+
+            <span class="tag">SALE</span>
+
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600"
+            alt="Women's Shoes">
+
+            <div class="product-info">
+                <h3>Women's Stylish Shoes</h3>
+                <div class="rating">★★★★☆ (80)</div>
+                <div class="price">₹899 <span class="old-price">₹1,499</span></div>
+
+                <div class="product-buttons">
+                    <button class="add-btn" onclick="addToCart('Womens Stylish Shoes')">ADD CART</button>
+                    <button class="buy-btn" onclick="buyNow('Womens Stylish Shoes')">BUY NOW</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="no-result" id="noResult">
+        Sorry! No products found.
+    </div>
+
+</section>
+
+<!-- OFFER -->
+<section class="offer">
+
+    <h2>MEGA FASHION SALE</h2>
+
+    <p>Get up to 50% OFF on selected fashion products.</p>
+
+    <a href="category.html">EXPLORE CATEGORIES →</a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>FASHION STORE</h3>
+            <p>Your Style, Your Identity.</p>
+            <p>Discover the latest fashion trends with us.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="category.html">Categories</a>
+            <a href="product.html">Products</a>
+        </div>
+
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: support@fashionstore.com</p>
+            <p>Phone: +91 9876543210</p>
+            <p>Location: India</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Fashion Store. All Rights Reserved.
+    </div>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// MOBILE MENU
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("show");
+}
+
+// CART
+let cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
+
+function updateCart() {
+    document.getElementById("cartCount").innerText = cart.length;
+    localStorage.setItem("fashionCart", JSON.stringify(cart));
+}
+
+function addToCart(product) {
+
+    cart.push(product);
+
+    updateCart();
+
+    alert(product + " added to cart successfully!");
+}
+
+function showCart() {
+
+    if(cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    alert("YOUR CART:\n\n" + cart.join("\n"));
+}
+
+// BUY NOW
+function buyNow(product) {
+
+    localStorage.setItem("selectedProduct", product);
+
+    alert("You selected: " + product +
+    "\n\nPlease connect your checkout page to complete the purchase.");
+
+}
+
+// CATEGORY FILTER
+let selectedCategory = "all";
+
+function selectCategory(category, button) {
+
+    selectedCategory = category;
+
+    document.querySelectorAll(".categories button")
+    .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    filterProducts();
+}
+
+// SEARCH AND PRICE FILTER
+function filterProducts() {
+
+    let search = document.getElementById("searchInput")
+    .value.toLowerCase();
+
+    let price = document.getElementById("priceFilter").value;
+
+    let sort = document.getElementById("sortFilter").value;
+
+    let cards = Array.from(
+        document.querySelectorAll(".product-card")
+    );
+
+    let visible = [];
+
+    cards.forEach(card => {
+
+        let name = card.querySelector("h3").innerText.toLowerCase();
+
+        let category = card.dataset.category;
+
+        let amount = Number(card.dataset.price);
+
+        let matchSearch = name.includes(search);
+
+        let matchCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+        let matchPrice =
+            price === "all" || amount < Number(price);
+
+        if(matchSearch && matchCategory && matchPrice) {
+
+            card.style.display = "block";
+            visible.push(card);
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    // SORT PRODUCTS
+    if(sort !== "default") {
+
+        visible.sort((a,b) => {
+
+            let p1 = Number(a.dataset.price);
+            let p2 = Number(b.dataset.price);
+
+            return sort === "low" ? p1-p2 : p2-p1;
+
+        });
+
+        let grid = document.getElementById("productGrid");
+
+        visible.forEach(card => grid.appendChild(card));
+    }
+
+    document.getElementById("noResult").style.display =
+        visible.length === 0 ? "block" : "none";
+}
+
+// CATEGORY FROM URL
+const params = new URLSearchParams(window.location.search);
+const initialCategory = params.get("category");
+
+if(initialCategory) {
+
+    const button = Array.from(
+        document.querySelectorAll(".categories button")
+    ).find(btn =>
+        btn.textContent.trim().toLowerCase() ===
+        (initialCategory === "men" ? "men" :
+        initialCategory === "women" ? "women" :
+        initialCategory === "shoes" ? "shoes" :
+        initialCategory === "watches" ? "watches" :
+        initialCategory === "accessories" ? "accessories" : "")
+    );
+
+    if(button) {
+        selectCategory(initialCategory, button);
+    }
+}
+
+// LOAD CART
+updateCart();
+
+</script>
+
+</body>
+</html>
